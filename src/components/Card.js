@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 
 const Card = ({ offer }) => {
+  const findParam = (arr, key) => {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i][key]) {
+        return arr[i][key];
+      }
+    }
+    return "N.R.";
+  };
+
   return (
     <div className="home-card">
       <div className="card-owner">
@@ -19,7 +28,7 @@ const Card = ({ offer }) => {
       </Link>
       <div className="card-details">
         <span>{offer.product_price.toFixed(2)} €</span>
-
+        <span>{findParam(offer.product_details, "TAILLE")}</span>
         <span>{offer.product_details[0].MARQUE}</span>
       </div>
     </div>

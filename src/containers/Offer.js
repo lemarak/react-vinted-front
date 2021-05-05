@@ -8,6 +8,14 @@ import Header from "../components/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Offer = () => {
+  const findParam = (arr, key) => {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i][key]) {
+        return arr[i][key];
+      }
+    }
+    return "N.R.";
+  };
   const { id } = useParams();
 
   const [offer, setOffer] = useState();
@@ -56,36 +64,40 @@ const Offer = () => {
               <div className="line-offer-detail">
                 <span className="line-offer-detail-title">MARQUE</span>
                 <span className="line-offer-detail-value">
-                  {offer.product_details[0].MARQUE}
+                  {findParam(offer.product_details, "MARQUE")}
                 </span>
               </div>
               <div className="line-offer-detail">
                 <span className="line-offer-detail-title">TAILLE</span>
-                <span className="line-offer-detail-value">N.R.</span>
+                <span className="line-offer-detail-value">
+                  {findParam(offer.product_details, "TAILLE")}
+                </span>
               </div>
               <div className="line-offer-detail">
                 <span className="line-offer-detail-title">ETAT</span>
                 <span className="line-offer-detail-value">
-                  {offer.product_details[1].ETAT}
+                  {findParam(offer.product_details, "ETAT")}
                 </span>
               </div>
               <div className="line-offer-detail">
                 <span className="line-offer-detail-title">COULEUR</span>
                 <span className="line-offer-detail-value">
-                  {offer.product_details.COULEUR}
+                  {findParam(offer.product_details, "COULEUR")}
                 </span>
               </div>
               <div className="line-offer-detail">
                 <span className="line-offer-detail-title">EMPLACEMENT</span>
                 <span className="line-offer-detail-value">
-                  {offer.product_details.EMPLACEMENT}
+                  {findParam(offer.product_details, "EMPLACEMENT")}
                 </span>
               </div>
               <div className="line-offer-detail">
                 <span className="line-offer-detail-title">
                   MODES DE PAIMENT
                 </span>
-                <span className="line-offer-detail-value">N.R.</span>
+                <span className="line-offer-detail-value">
+                  {findParam(offer.product_details, "MODES DE PAIEMENT")}
+                </span>
               </div>
             </div>
             {/* divider */}

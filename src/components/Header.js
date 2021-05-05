@@ -1,9 +1,13 @@
+import { Link } from "react-router-dom";
+
 import Logo from "../assets/img/logo.png";
 
 const Header = () => {
   return (
     <header>
-      <img className="logo" src={Logo} alt="Vinted" />
+      <Link to="/">
+        <img className="logo" src={Logo} alt="Vinted" />
+      </Link>
       <input
         type="text"
         className="search-input"

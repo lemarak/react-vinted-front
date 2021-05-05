@@ -3,3 +3,79 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+
+header {
+  height: 80px;
+  width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+}
+
+header input {
+  width: 590px;
+  height: 40px;
+  margin-left: 30px;
+  padding-left: 40px;
+  background-color: #f5f6f7;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+header button {
+  height: 30px;
+  width: 115px;
+  border: 6px ​solid #2cb1ba;
+  font-size: 12px;
+  outline: none;
+  text-align: center;
+  border: 1px solid #2cb1ba;
+}
+
+.button-login-signup {
+  margin-right: 10px;
+  background-color: white;
+  color: #2cb1ba;
+}
+
+.button-sold {
+  background-color: #2cb1ba;
+  color: white;
+  margin-left: 20px;
+}
+
+.hero {
+  height: 455px;
+  width: 100%;
+  background-image: url(/src/assets/img/hero.jpeg);
+  background-position: 50%;
+  background-size: cover;
+  margin-bottom: 30px;
+}
+
+.home-cards {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-card {
+  width: 235px;
+}
+
+.card {
+}

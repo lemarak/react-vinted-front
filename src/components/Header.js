@@ -6,13 +6,13 @@ const Header = () => {
       <img className="logo" src={Logo} alt="Vinted" />
       <input
         type="text"
-        class="search-input"
+        className="search-input"
         placeholder="Recherche des articles"
       ></input>
       <nav className="menu">
-        <button class="button-login-signup">S'inscrire</button>
-        <button class="button-login-signup"> Se connecter</button>
-        <button class="button-sold">Vends tes articles</button>
+        <button className="button-login-signup">S'inscrire</button>
+        <button className="button-login-signup"> Se connecter</button>
+        <button className="button-sold">Vends tes articles</button>
       </nav>
     </header>
   );

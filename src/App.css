@@ -38,6 +38,7 @@ header button {
   height: 30px;
   width: 115px;
   border: 6px ​solid #2cb1ba;
+  border-radius: 5px;
   font-size: 12px;
   outline: none;
   text-align: center;
@@ -71,11 +72,18 @@ header button {
   padding: 0 10px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .home-card {
   width: 235px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
 
-.card {
+.home-card-img-product {
+  height: 360px;
+  width: 235px;
+  object-fit: cover;
 }

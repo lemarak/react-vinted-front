@@ -56,9 +56,6 @@ const Offer = () => {
               <div className="line-offer-detail">
                 <span className="line-offer-detail-title">MARQUE</span>
                 <span className="line-offer-detail-value">
-                  {offer.product_details.find(
-                    (elem) => Object.keys(elem)[0] === "MARQUE"
-                  )}
                   {offer.product_details[0].MARQUE}
                 </span>
               </div>

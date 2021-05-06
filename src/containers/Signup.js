@@ -1,18 +1,82 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
 
-const Signup = () => {
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+
+const Signup = ({ setUser }) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isValid, setIsValid] = useState(true);
+  const history = useHistory();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = {
+      username: username,
+      email: email,
+      password: password,
+    };
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        data
+      );
+      const token = response.data.token;
+
+      if (token) {
+        setUser(response.data.token);
+        setIsValid(true);
+        history.push("/");
+      }
+    } catch (error) {
+      console.log(error.response.status);
+      if (error.response.status === 409) {
+        setIsValid(false);
+      }
+    }
+  };
   return (
     <div className="signup">
       <h2>S'inscrire</h2>
-      <form className="signup-form" action="" method="post">
+      <form
+        className="signup-form"
+        action=""
+        method="post"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           name="nom"
           id="nom"
           placeholder="Nom d'utilisateur"
+          onChange={(event) => setUsername(event.target.value)}
+          value={username}
         />
-        <input type="email" name="email" id="email" placeholder="Email" />
-        <input type="password" name="pwd" id="pwd" placeholder="Mot de passe" />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          onChange={(event) => setEmail(event.target.value)}
+          value={email}
+        />
+        {!isValid && (
+          <span className="signup-login-error-message">
+            Cet email a déjà un compte chez nous !
+          </span>
+        )}
+
+        <input
+          type="password"
+          name="pwd"
+          id="pwd"
+          placeholder="Mot de passe"
+          onChange={(event) => setPassword(event.target.value)}
+          value={password}
+        />
         <div className="checkbox-div">
           <input type="checkbox" name="news" id="news" />
           <span>S'inscrire à notre newsletter</span>
@@ -25,7 +89,7 @@ const Signup = () => {
         <button type="submit">S'inscrire</button>
       </form>
       <Link to="/login">
-        <a href="/login">Tu as déjà un compte ? Connecte-toi !</a>
+        <span>Tu as déjà un compte ? Connecte-toi !</span>
       </Link>
     </div>
   );

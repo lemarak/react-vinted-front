@@ -52,6 +52,7 @@ header {
 
 .logo {
   height: 40px;
+  margin-bottom: 20px;
 }
 
 header input {
@@ -91,6 +92,17 @@ header button {
   margin-right: 10px;
   background-color: white;
   color: #2cb1ba;
+}
+
+.logout {
+  height: 30px;
+  border-radius: 5px;
+  font-family: "Maison Neue";
+  font-size: 12px;
+  outline: none;
+  border: none;
+  background-color: #c2175b;
+  color: #fff;
 }
 
 .button-sold {
@@ -312,4 +324,17 @@ header button {
 .signup a {
   color: #2cb1ba;
   font-size: 12px;
+}
+
+.signup-login-error-message {
+  color: red;
+  font-size: 9px;
+}
+
+.signup-login-error-message-display {
+  display: flex;
+}
+
+.signup-login-error-message-hidden {
+  display: none;
 }

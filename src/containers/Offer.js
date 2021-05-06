@@ -3,8 +3,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import Header from "../components/Header";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Offer = () => {
@@ -14,7 +12,7 @@ const Offer = () => {
         return arr[i][key];
       }
     }
-    return "N.R.";
+    return "";
   };
   const { id } = useParams();
 
@@ -43,7 +41,6 @@ const Offer = () => {
     </div>
   ) : (
     <div>
-      <Header />
       {/* Offer */}
       <div className="container-offer">
         <div className="offer">

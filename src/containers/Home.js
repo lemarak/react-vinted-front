@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Cards from "../components/Cards";
 
@@ -40,7 +39,6 @@ const Home = () => {
     </div>
   ) : (
     <div>
-      <Header />
       <Hero />
       <Cards offers={offers} />
     </div>

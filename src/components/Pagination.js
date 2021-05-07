@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Pagination = ({ page, setPage, count, LIMIT }) => {
-  console.log(LIMIT);
   const pageMax = Math.ceil(Number(count) / Number(LIMIT));
 
   return (

@@ -12,6 +12,7 @@ import Login from "./containers/Login";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+  const [page, setPage] = useState(1);
 
   const setUser = (token) => {
     if (token) {
@@ -22,6 +23,7 @@ function App() {
       setUserToken(null);
     }
   };
+
   return (
     <Router>
       <Header userToken={userToken} setUser={setUser} />
@@ -36,7 +38,7 @@ function App() {
           <Offer />
         </Route>
         <Route path="/">
-          <Home />
+          <Home page={page} setPage={setPage} />
         </Route>
       </Switch>
     </Router>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "../assets/img/logo.png";
 
-const Header = ({ userToken, setUser }) => {
+const Header = ({ userToken, setUser, page }) => {
   return (
     <header>
       <Link to="/">

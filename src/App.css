@@ -204,8 +204,13 @@ header button {
   gap: 30px;
 }
 
+.offer-carousel {
+  width: 400px;
+  height: 600px;
+}
 .offer-picture {
   height: 600px;
+  width: 400px;
   object-fit: cover;
 }
 

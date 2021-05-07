@@ -1,11 +1,35 @@
 import axios from "axios";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Offer = () => {
+  const [offer, setOffer] = useState();
+  const [offerPictures, setOfferPictures] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { id } = useParams();
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   const findParam = (arr, key) => {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i][key]) {
@@ -14,10 +38,6 @@ const Offer = () => {
     }
     return "";
   };
-  const { id } = useParams();
-
-  const [offer, setOffer] = useState();
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +46,7 @@ const Offer = () => {
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
         setOffer(response.data);
+        setOfferPictures(response.data.product_pictures);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -34,6 +55,13 @@ const Offer = () => {
     fetchData();
   }, [id]);
 
+  const carousel = offerPictures.map((picture, index) => {
+    return (
+      <div key={index}>
+        <img className="offer-picture" src={picture.url} alt={offer.name} />
+      </div>
+    );
+  });
   return isLoading ? (
     <div className="loading">
       <FontAwesomeIcon icon="spinner" className="icon" spin />
@@ -44,12 +72,39 @@ const Offer = () => {
       {/* Offer */}
       <div className="container-offer">
         <div className="offer">
-          {/* picture */}
-          <img
-            className="offer-picture"
-            src={offer.product_pictures[0].url}
-            alt={offer.product_name}
-          />
+          {/* Carousel pictures */}
+          <Carousel
+            responsive={responsive}
+            swipeable={false}
+            draggable={false}
+            showDots={true}
+            infinite={false}
+            className="offer-carousel"
+          >
+            {/* <div>
+              <img
+                className="offer-picture"
+                src={offer.product_pictures[0].url}
+                alt={offer.product_name}
+              />
+            </div>
+            <div>
+              <img
+                className="offer-picture"
+                src={offer.product_pictures[0].url}
+                alt={offer.product_name}
+              />
+            </div>
+            <div>
+              <img
+                className="offer-picture"
+                src={offer.product_pictures[0].url}
+                alt={offer.product_name}
+              />
+            </div> */}
+            {carousel}
+          </Carousel>
+
           {/* details */}
           <div className="offer-details">
             {/* price */}

@@ -7,7 +7,7 @@ const Card = ({ offer }) => {
         return arr[i][key];
       }
     }
-    return "N.R.";
+    return "";
   };
 
   return (

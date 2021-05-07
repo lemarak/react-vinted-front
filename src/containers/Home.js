@@ -15,9 +15,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faSpinner, faAngleLeft, faAngleRight);
 
-const Home = () => {
+const Home = ({ page, setPage }) => {
   const LIMIT = 4;
-  const [page, setPage] = useState(1);
+
   const [count, setCount] = useState(0);
   const [offers, setOffers] = useState();
   const [isLoading, setIsLoading] = useState(true);

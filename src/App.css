@@ -41,6 +41,19 @@ input[type="checkbox" i] {
   border: initial;
 }
 
+/* Pagination */
+.pagination {
+  font-size: 20px;
+  color: #2cb1ba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination .icon {
+  font-size: 26px;
+  margin: 0 6px;
+}
+
 header {
   height: 80px;
   width: 1240px;

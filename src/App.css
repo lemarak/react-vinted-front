@@ -55,12 +55,14 @@ input[type="checkbox" i] {
 }
 
 header {
-  height: 80px;
+  height: 100px;
   width: 1240px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
 }
 
 .logo {
@@ -81,6 +83,33 @@ header input {
   padding-left: 40px;
 }
 
+header .search {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.search-prices {
+  display: flex;
+  align-items: center;
+  margin: 12px 40px;
+}
+.search-prices span {
+  font-size: 12px;
+}
+.search-prices input {
+  width: 40px;
+  height: 30px;
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+header .search .icon {
+  color: lightcoral;
+  font-size: 18px;
+  margin-left: 30px;
+}
 header nav {
   display: flex;
   justify-content: space-between;
@@ -125,6 +154,7 @@ header button {
 }
 
 .hero {
+  margin-top: 100px;
   height: 455px;
   width: 100%;
   background-image: url(/src/assets/img/hero.jpeg);

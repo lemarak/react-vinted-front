@@ -10,10 +10,23 @@ import Header from "./components/Header";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faSpinner,
+  faAngleLeft,
+  faAngleRight,
+  faEraser,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faSpinner, faAngleLeft, faAngleRight, faEraser);
+
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const [page, setPage] = useState(1);
-
+  const [search, setSearch] = useState({
+    title: "",
+    priceMin: 0,
+    priceMax: null,
+  });
   const setUser = (token) => {
     if (token) {
       Cookies.set("userToken", token, { expires: 2 });
@@ -26,7 +39,12 @@ function App() {
 
   return (
     <Router>
-      <Header userToken={userToken} setUser={setUser} />
+      <Header
+        userToken={userToken}
+        setUser={setUser}
+        setSearch={setSearch}
+        search={search}
+      />
       <Switch>
         <Route path="/signup">
           <Signup setUser={setUser} />
@@ -38,7 +56,7 @@ function App() {
           <Offer />
         </Route>
         <Route path="/">
-          <Home page={page} setPage={setPage} />
+          <Home page={page} setPage={setPage} search={search} />
         </Route>
       </Switch>
     </Router>

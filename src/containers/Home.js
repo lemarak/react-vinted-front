@@ -5,17 +5,9 @@ import Hero from "../components/Hero";
 import Cards from "../components/Cards";
 import Pagination from "../components/Pagination";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faSpinner,
-  faAngleLeft,
-  faAngleRight,
-} from "@fortawesome/free-solid-svg-icons";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-library.add(faSpinner, faAngleLeft, faAngleRight);
 
-const Home = ({ page, setPage }) => {
+const Home = ({ page, setPage, search }) => {
   const LIMIT = 4;
 
   const [count, setCount] = useState(0);
@@ -28,8 +20,23 @@ const Home = ({ page, setPage }) => {
         // const response = await axios.get(
         //   "https://vinted-sda.herokuapp.com/offers"
         // );
+
+        // Query Search
+        let query = "";
+        if (search.title) {
+          query += `&title=${search.title}`;
+        }
+        let priceMin = 0;
+        if (!isNaN(search.priceMin) && search.priceMin > 0) {
+          priceMin = search.priceMin;
+        }
+        query += `&priceMin=${priceMin}`;
+        if (!isNaN(search.priceMax) && search.priceMax > 0) {
+          query += `&priceMax=${search.priceMax}`;
+        }
+        // Request
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${LIMIT}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${LIMIT}${query}`
         );
         setOffers(response.data.offers);
         setCount(response.data.count);
@@ -39,7 +46,7 @@ const Home = ({ page, setPage }) => {
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, search]);
 
   return isLoading ? (
     <div className="loading">

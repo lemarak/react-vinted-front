@@ -109,7 +109,7 @@ const Offer = () => {
               <div className="line-offer-detail">
                 <span className="line-offer-detail-title">ETAT</span>
                 <span className="line-offer-detail-value">
-                  {findParam(offer.product_details, "ETAT")}
+                  {findParam(offer.product_details, "ÉTAT")}
                 </span>
               </div>
               <div className="line-offer-detail">

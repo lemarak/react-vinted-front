@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Logo from "../assets/img/logo.png";
@@ -95,7 +95,7 @@ const Header = ({ userToken, setUser, search, setSearch }) => {
             </Link>
           </>
         )}
-        <Link className="nav-link" to="/">
+        <Link className="nav-link" to="/publish">
           <button className="button-sold">Vends tes articles</button>
         </Link>
       </nav>

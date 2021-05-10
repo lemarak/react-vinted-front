@@ -39,8 +39,8 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <div className="signup">
-      <h2>S'inscrire</h2>
+    <div className="form-div">
+      <h2>Se connecter</h2>
       <form
         className="signup-form"
         action=""

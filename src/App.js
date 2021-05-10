@@ -1,7 +1,12 @@
 import "./App.css";
 
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Cookies from "js-cookie";
 
 import Home from "./containers/Home";
@@ -9,6 +14,7 @@ import Offer from "./containers/Offer";
 import Header from "./components/Header";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
+import Publish from "./containers/Publish";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -51,6 +57,13 @@ function App() {
         </Route>
         <Route path="/login">
           <Login setUser={setUser} />
+        </Route>
+        <Route path="/publish">
+          {userToken ? (
+            <Publish userToken={userToken} />
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
         <Route path="/offer/:id">
           <Offer />

@@ -39,7 +39,7 @@ const Signup = ({ setUser }) => {
     }
   };
   return (
-    <div className="signup">
+    <div className="form-div">
       <h2>S'inscrire</h2>
       <form
         className="signup-form"

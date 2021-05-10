@@ -61,8 +61,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
+  padding-left: 60px;
+  position: fixed;
+  top: 0;
 }
 
 .logo {
@@ -222,6 +223,7 @@ header button {
 }
 
 .container-offer {
+  margin-top: 100px;
   background-color: #eaedee;
   height: calc(100vh - 80px);
 }

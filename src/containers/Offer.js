@@ -46,7 +46,9 @@ const Offer = () => {
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
         setOffer(response.data);
-        setOfferPictures(response.data.product_pictures);
+        response.data.product_pictures.length > 0
+          ? setOfferPictures(response.data.product_pictures)
+          : setOfferPictures([response.data.product_image]);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -81,27 +83,6 @@ const Offer = () => {
             infinite={false}
             className="offer-carousel"
           >
-            {/* <div>
-              <img
-                className="offer-picture"
-                src={offer.product_pictures[0].url}
-                alt={offer.product_name}
-              />
-            </div>
-            <div>
-              <img
-                className="offer-picture"
-                src={offer.product_pictures[0].url}
-                alt={offer.product_name}
-              />
-            </div>
-            <div>
-              <img
-                className="offer-picture"
-                src={offer.product_pictures[0].url}
-                alt={offer.product_name}
-              />
-            </div> */}
             {carousel}
           </Carousel>
 
@@ -160,10 +141,12 @@ const Offer = () => {
             <div className="offer-description">{offer.product_description}</div>
             {/* owner */}
             <div className="offer-owner">
-              <img
-                src={offer.owner.account.avatar.url}
-                alt={offer.owner.account.username}
-              />
+              {offer.owner.account.avatar && (
+                <img
+                  src={offer.owner.account.avatar.url}
+                  alt={offer.owner.account.username}
+                />
+              )}
               <span>{offer.owner.account.username}</span>
             </div>
             {/* buy */}

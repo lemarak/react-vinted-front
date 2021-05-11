@@ -29,10 +29,11 @@ library.add(faSpinner, faAngleLeft, faAngleRight, faEraser);
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   const [page, setPage] = useState(1);
+  const [sort, setSort] = useState(true);
   const [search, setSearch] = useState({
-    title: "",
+    title: undefined,
     priceMin: 0,
-    priceMax: null,
+    priceMax: undefined,
   });
   const setUser = (token) => {
     if (token) {
@@ -51,6 +52,8 @@ function App() {
         setUser={setUser}
         setSearch={setSearch}
         search={search}
+        setSort={setSort}
+        sort={sort}
       />
       <Switch>
         <Route path="/signup">

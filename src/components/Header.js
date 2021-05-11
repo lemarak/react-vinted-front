@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Logo from "../assets/img/logo.png";
 
-const Header = ({ userToken, setUser, search, setSearch }) => {
+const Header = ({ userToken, setUser, search, setSearch, sort, setSort }) => {
   const [title, setTitle] = useState(search.title);
   const [priceMin, setPriceMin] = useState(search.priceMin);
   const [priceMax, setPriceMax] = useState(search.priceMax);
+  const [clickSort, setClickSort] = useState(sort);
+
   // form search
   const handleSearchTitle = (event) => {
     const newSearch = { ...search };
@@ -29,15 +31,21 @@ const Header = ({ userToken, setUser, search, setSearch }) => {
     }
   };
 
+  const handleSort = (event) => {
+    console.log("coucou");
+    const newSort = !sort;
+    setSort(newSort);
+  };
+
   const handleReset = (event) => {
     const newSearch = {
-      title: "",
+      title: undefined,
       priceMin: 0,
-      priceMax: null,
+      priceMax: undefined,
     };
-    setTitle("");
+    setTitle(undefined);
     setPriceMin(0);
-    setPriceMax("");
+    setPriceMax(undefined);
     setSearch(newSearch);
   };
 
@@ -57,7 +65,18 @@ const Header = ({ userToken, setUser, search, setSearch }) => {
           onChange={handleSearchTitle}
           value={title}
         ></input>
+
         <div className="search-prices">
+          <span className="increasing">Trier par prix </span>
+          <span
+            className="sort-price"
+            onClick={() => {
+              handleSort();
+            }}
+          >
+            {sort ? " croissant" : " décroissant"}
+          </span>
+          <input type="hidden" value={clickSort} onChange={handleSort} />
           <span>Prix entre</span>
           <input
             type="text"

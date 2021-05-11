@@ -4,9 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
 
-console.log("KEY", process.env.PUBLIC_KEY_STRIPE);
-
-const stripePromise = loadStripe(process.env.PUBLIC_KEY_STRIPE);
+const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
 const Payment = () => {
   const location = useLocation();
   const { offer } = location.state;
@@ -57,7 +55,7 @@ const Payment = () => {
           </div>
           {/* Stripe */}
           <Elements stripe={stripePromise}>
-            <CheckoutForm offer={offer} />
+            <CheckoutForm offer={offer} totalTransaction={totalTransaction} />
           </Elements>
         </div>
       </div>

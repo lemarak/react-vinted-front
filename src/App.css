@@ -613,3 +613,52 @@ header button {
   background: #00c06d;
   border-color: #00c06d;
 }
+
+/* Tri croissant / décroissant */
+
+.sort-price {
+  color: rgb(51, 178, 228);
+  margin: 0 15px 0 4px;
+}
+/* .checkbox {
+  margin-right: 25px;
+} */
+
+/* 
+.checkbox input[name="price"] {
+  display: none;
+}
+
+.checkbox .knob,
+.home-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox .knob {
+  background-color: #fff;
+  border: 1px solid #666;
+  border-radius: 100%;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  transition: left 0.1s ease-in-out 0s;
+  font-weight: 700;
+}
+
+.checkbox .wrapper {
+  background-color: #2cb1ba;
+  border-radius: 10px;
+  width: 42px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.increasing {
+  margin-right: 10px;
+} */

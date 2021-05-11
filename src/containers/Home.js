@@ -7,7 +7,7 @@ import Pagination from "../components/Pagination";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Home = ({ page, setPage, search }) => {
+const Home = ({ page, setPage, search, sort }) => {
   const LIMIT = 4;
 
   const [count, setCount] = useState(0);
@@ -34,12 +34,20 @@ const Home = ({ page, setPage, search }) => {
         if (!isNaN(search.priceMax) && search.priceMax > 0) {
           query += `&priceMax=${search.priceMax}`;
         }
+        if (sort) {
+          query += "&sort=price-asc";
+        } else {
+          query += "&sort=price-asc";
+        }
+        console.log(query);
         // Request
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=${LIMIT}${query}`
         );
+
         setOffers(response.data.offers);
         setCount(response.data.count);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);

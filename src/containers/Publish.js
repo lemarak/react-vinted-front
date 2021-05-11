@@ -51,7 +51,7 @@ const Publish = ({ userToken }) => {
 
       if (response.status === 200) {
         setIsUpload(true);
-        history.push("/offer/${response.data._id}");
+        history.push(`/offer/${response.data._id}`);
       }
     } catch (error) {
       setIsUpload(false);
@@ -71,13 +71,13 @@ const Publish = ({ userToken }) => {
           <div className="publish-file">
             <div className="box-dashed">
               <div className="input-publish-file">
-                <label htmlFor="file" class="label-file">
+                <label htmlFor="file" className="label-file">
                   <span className="input-sign">+</span>
                   <span>Ajoute une photo</span>
                   <input
                     id="file"
                     type="file"
-                    class="input-file"
+                    className="input-file"
                     onChange={(event) => {
                       setPicture(event.target.files[0]);
                     }}
@@ -116,8 +116,8 @@ const Publish = ({ userToken }) => {
           </div>
 
           {/* Détails */}
-          <div class="text-input-section">
-            <div class="text-input">
+          <div className="text-input-section">
+            <div className="text-input">
               <h4>Marque</h4>
               <input
                 type="text"
@@ -129,7 +129,7 @@ const Publish = ({ userToken }) => {
                 }}
               />
             </div>
-            <div class="text-input">
+            <div className="text-input">
               <h4>Taille</h4>
               <input
                 type="text"
@@ -141,7 +141,7 @@ const Publish = ({ userToken }) => {
                 }}
               />
             </div>
-            <div class="text-input">
+            <div className="text-input">
               <h4>Couleur</h4>
               <input
                 type="text"
@@ -153,7 +153,7 @@ const Publish = ({ userToken }) => {
                 }}
               />
             </div>
-            <div class="text-input">
+            <div className="text-input">
               <h4>Etat</h4>
               <input
                 name="wearRate"
@@ -164,7 +164,7 @@ const Publish = ({ userToken }) => {
                 }}
               />
             </div>
-            <div class="text-input">
+            <div className="text-input">
               <h4>Lieu</h4>
               <input
                 name="city"
@@ -178,10 +178,10 @@ const Publish = ({ userToken }) => {
           </div>
 
           {/* Price */}
-          <div class="text-input-section">
-            <div class="text-input">
+          <div className="text-input-section">
+            <div className="text-input">
               <h4>Prix</h4>
-              <div class="checkbox-section">
+              <div className="checkbox-section">
                 <input
                   type="text"
                   id="price"
@@ -191,8 +191,8 @@ const Publish = ({ userToken }) => {
                     setPrice(event.target.value);
                   }}
                 />
-                <div class="checkbox-input">
-                  <label for="exchange" class="checkbox-design"></label>
+                <div className="checkbox-input">
+                  <label htmlFor="exchange" className="checkbox-design"></label>
                   <input
                     type="checkbox"
                     name="exchange"
@@ -206,8 +206,8 @@ const Publish = ({ userToken }) => {
           </div>
 
           {/* Form */}
-          <div class="form-button-div">
-            <button type="submit" class="form-validation">
+          <div className="form-button-div">
+            <button type="submit" className="form-validation">
               Ajouter
             </button>
           </div>

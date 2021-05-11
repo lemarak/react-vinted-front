@@ -598,3 +598,18 @@ header button {
 .payment-card .content .bold {
   font-weight: 700;
 }
+
+.payment-card button {
+  margin-top: 8px;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 22px;
+  height: 44px;
+  padding: 0 14px;
+  color: #fff;
+  border: 1px solid;
+  border-radius: 4px;
+  background: #00c06d;
+  border-color: #00c06d;
+}

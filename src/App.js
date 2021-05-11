@@ -15,6 +15,7 @@ import Header from "./components/Header";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -61,6 +62,13 @@ function App() {
         <Route path="/publish">
           {userToken ? (
             <Publish userToken={userToken} />
+          ) : (
+            <Redirect to="/login" />
+          )}
+        </Route>
+        <Route path="/payment">
+          {userToken ? (
+            <Payment userToken={userToken} />
           ) : (
             <Redirect to="/login" />
           )}

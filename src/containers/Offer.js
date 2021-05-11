@@ -3,7 +3,7 @@ import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,8 +13,11 @@ const Offer = () => {
   const [offerPictures, setOfferPictures] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const history = useHistory();
+
   const { id } = useParams();
 
+  // Carousel
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -30,6 +33,7 @@ const Offer = () => {
     },
   };
 
+  // Get value in offer.product_details
   const findParam = (arr, key) => {
     for (let i = 0; i < arr.length; i++) {
       if (arr[i][key]) {
@@ -39,6 +43,7 @@ const Offer = () => {
     return "";
   };
 
+  // Get offer
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -57,6 +62,7 @@ const Offer = () => {
     fetchData();
   }, [id]);
 
+  // Carousel
   const carousel = offerPictures.map((picture, index) => {
     return (
       <div key={index}>
@@ -64,6 +70,13 @@ const Offer = () => {
       </div>
     );
   });
+
+  // Link to Payment with history
+  const handlePayment = () => {
+    history.push("/payment", { offer });
+  };
+
+  // Return
   return isLoading ? (
     <div className="loading">
       <FontAwesomeIcon icon="spinner" className="icon" spin />
@@ -150,7 +163,8 @@ const Offer = () => {
               <span>{offer.owner.account.username}</span>
             </div>
             {/* buy */}
-            <button>Acheter</button>
+
+            <button onClick={handlePayment}>Acheter</button>
           </div>
         </div>
       </div>
